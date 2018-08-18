@@ -10,11 +10,10 @@
         <!-- lookup parent from repository -->
     </parent>
     
-    <groupId>io.github.projecteuler</groupId>
-    <artifactId>project-euler</artifactId>
+    <groupId>com.euler</groupId>
+    <artifactId>euler</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    
     <name>project-euler</name>
     <description>Solutions to problems on Project Euler</description>
     
