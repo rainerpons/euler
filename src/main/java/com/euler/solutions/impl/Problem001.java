@@ -1,7 +1,9 @@
-package com.euler.solutions;
+package com.euler.solutions.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.euler.solutions.IntegerSolution;
 
 /**
  * Multiples of 3 and 5

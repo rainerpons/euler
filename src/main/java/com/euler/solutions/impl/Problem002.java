@@ -1,7 +1,9 @@
-package com.euler.solutions;
+package com.euler.solutions.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.euler.solutions.IntegerSolution;
 
 /*
  * Even Fibonacci numbers
@@ -17,9 +19,10 @@ import java.util.List;
 
 public class Problem002 extends IntegerSolution {
 	/*
-	 * Naive recursive solution for the Fibonacci sequence (for now).
+	 * Naive recursive solution for finding terms in the Fibonacci sequence (for now). Time
+	 * complexity is exponential.
 	 */
-	public static Integer fibonacciNaive(int seedA, int seedB, int index) {
+	public static Integer fibonacciRecursive(int seedA, int seedB, int index) {
 		if (index < 0) {
 			throw new IllegalArgumentException("The index must be a non-negative integer.");
 		} else if (index == 0) {
@@ -27,9 +30,27 @@ public class Problem002 extends IntegerSolution {
 		} else if (index == 1) {
 			return seedB;
 		} else {
-			return fibonacciNaive(seedA, seedB, index - 1)
-					+ fibonacciNaive(seedA, seedB, index - 2);
+			return fibonacciRecursive(seedA, seedB, index - 1)
+					+ fibonacciRecursive(seedA, seedB, index - 2);
 		}
+	}
+
+	/*
+	 * Memoized solution for finding terms in the Fibonacci sequence. Time complexity is linear.
+	 */
+	public static Integer fibonacciMemoized(int seedA, int seedB, int index) {
+		if (index < 0) {
+			throw new IllegalArgumentException("The index must be a non-negative integer.");
+		}
+
+		Integer[] terms = new Integer[index + 1];
+		terms[0] = seedA;
+		terms[1] = seedB;
+
+		for (int i = 2; i < index + 1; i++) {
+			terms[i] = terms[i - 1] + terms[i - 2];
+		}
+		return terms[index];
 	}
 
 	public static List<Integer> listOfFibonacciTerms(int seedA, int seedB, int limit) {
@@ -39,9 +60,10 @@ public class Problem002 extends IntegerSolution {
 		if (max == limit) {
 			terms.add(max);
 		}
+
 		if (max < limit) {
 			Integer count = 0;
-			Integer current = fibonacciNaive(seedA, seedB, count);
+			Integer current = fibonacciRecursive(seedA, seedB, count);
 			while (current <= limit) {
 				terms.add(current);
 			}

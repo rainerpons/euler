@@ -1,4 +1,7 @@
-package com.euler.solutions;
+package com.euler.solutions.impl;
+
+import static com.euler.solutions.impl.Problem001.listOfMultiples;
+import static com.euler.solutions.impl.Problem001.sumOfListOfMultiples;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,9 +10,6 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import static com.euler.solutions.Problem001.listOfMultiples;
-import static com.euler.solutions.Problem001.sumOfListOfMultiples;
 
 @SuppressWarnings("unused")
 public class Problem001Test {
